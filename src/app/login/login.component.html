@@ -1,0 +1,29 @@
+<main>
+  <!-- Logo EloGroup -->
+  <header>
+    <img src="../../assets/img/logo-elogroup-confundo.png" alt="LogoEloGroup">
+  </header>
+
+
+  <!-- Formulário de entrada -->
+  <form action="" class="form-group">
+    <label for="usuario">Usuário *</label>
+    <input type="text" class="form-item form-control" formControlName="usuario">
+
+    <label for="senha">Senha *</label>
+    <input type="password" name="senha" class="form-item">
+
+    <label for="confirmSenha">Confirme sua senha *</label>
+    <input type="password" name="confirmSenha" class="form-item">
+
+    <!-- Aviso de erro -->
+    <div *ngIf="formulario.controls.usuario.errors?.required" class="aviso">
+
+      <div *ngIf="formulario.controls.usuario.errors?.required">
+        Todos os campos são obrigatórios.
+      </div>
+    </div>
+
+    <button>Entrar</button>
+  </form>
+</main>
