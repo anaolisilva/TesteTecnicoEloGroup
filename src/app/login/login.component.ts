@@ -12,11 +12,11 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder
-
     ) {
     this.formulario = this.formBuilder.group({
-      usuario: new FormControl('', [Validators.required]),
-      senha: new FormControl('', [Validators.required, Validators.minLength(8)])
+      usuario:['', [Validators.required]],
+      senha: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]],
+      confirmSenha: ['', [Validators.required, this.validaConfirmSenha]]
     })
 
    }
@@ -24,7 +24,17 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  validaConfirmSenha(control: FormControl) {
 
+    const senha = control.get('senha')?.value;
+    const confirmSenha = control.get('confirmSenha')?.value;
+
+    console.log(senha)
+
+    return (senha == confirmSenha) ? null : {senhasDiferentes : true}
+
+
+  }
 
 
 }

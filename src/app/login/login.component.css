@@ -1,13 +1,1 @@
-.form-group {
-  display: flex;
-  flex-direction: column;
-  width: 50vw;
-}
 
-.form-item {
-  margin-bottom: 3%;
-}
-
-.form-item input {
-  size: 2rem;
-}

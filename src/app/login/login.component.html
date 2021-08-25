@@ -1,29 +1,64 @@
-<main>
-  <!-- Logo EloGroup -->
-  <header>
-    <img src="../../assets/img/logo-elogroup-confundo.png" alt="LogoEloGroup">
-  </header>
+<main class="d-flex flex-column align-items-center justify-content-center">
+  <div class="border m-4 border-dark">
+
+    <!-- Logo EloGroup -->
+    <header class="row m-3">
+      <img src="../../assets/img/logo-elogroup-confundo.png" alt="LogoEloGroup" class="p-0 col-sm-12">
+    </header>
 
 
-  <!-- Formulário de entrada -->
-  <form action="" class="form-group">
-    <label for="usuario">Usuário *</label>
-    <input type="text" class="form-item form-control" formControlName="usuario">
+    <!-- Formulário de entrada -->
+    <div class="row w-100 mx-auto">
 
-    <label for="senha">Senha *</label>
-    <input type="password" name="senha" class="form-item">
+      <form [formGroup]="formulario" class="col-sm-12 p-5">
 
-    <label for="confirmSenha">Confirme sua senha *</label>
-    <input type="password" name="confirmSenha" class="form-item">
+        <section class="form-group mb-4">
+          <label for="usuario">Usuário *</label>
+          <input type="text" class="form-control" formControlName="usuario">
+          <ng-container *ngIf="formulario.controls.usuario.invalid && formulario.controls.usuario.touched" class="">
+            <small *ngIf="formulario.controls.usuario.errors?.required" class="text-danger">
+              Campo obrigatório.
+            </small>
 
-    <!-- Aviso de erro -->
-    <div *ngIf="formulario.controls.usuario.errors?.required" class="aviso">
+          </ng-container>
+        </section>
 
-      <div *ngIf="formulario.controls.usuario.errors?.required">
-        Todos os campos são obrigatórios.
-      </div>
+
+        <section class="form-group mb-4">
+
+          <label for="senha">Senha *</label>
+          <input type="text" name="senha" class="form-item" formControlName="senha" class="form-control">
+          <ng-container *ngIf="formulario.controls.senha.invalid && formulario.controls.senha.touched" class="">
+            <small *ngIf="formulario.controls.senha.errors?.required" class="text-danger">
+              Campo obrigatório.
+            </small>
+            <small *ngIf="formulario.controls.senha.errors?.minlength || formulario.controls.senha.errors?.pattern" class="text-danger">
+              Deve conter pelo menos 8 caracteres, entre eles um número, um caractere especial e uma letra.
+            </small>
+          </ng-container>
+        </section>
+
+        <section class="form-group mb-4">
+
+          <label for="confirmSenha">Confirme sua senha *</label>
+
+          <input type="password" class="form-control" formControlName="confirmSenha" name="confirmSenha">
+          <ng-container *ngIf="formulario.controls.confirmSenha.invalid && formulario.controls.confirmSenha.touched">
+            <small *ngIf="formulario.controls.confirmSenha.errors?.required" class="text-danger">
+              Campo obrigatório.
+            </small>
+            <small *ngIf="formulario.controls.confirmSenha.errors?.validaConfirmSenha" class="text-danger">
+              Senhas digitadas não são iguais.
+            </small>
+
+          </ng-container>
+        </section>
+
+
+
+        <button class="btn btn-dark" type="submit">Entrar</button>
+      </form>
     </div>
+  </div>
 
-    <button>Entrar</button>
-  </form>
 </main>
