@@ -1,0 +1,91 @@
+
+<main>
+
+  <!-- Cabeçalho -->
+  <header class="row d-flex align-items-center mb-5">
+
+    <!-- Logo -->
+    <img src="../../assets/img/logo-elogroup-comfundo.png" alt="Logo Elogroup" class="col-md-6 col-sm-12 my-3">
+
+    <!-- Título da página -->
+    <h1 class="ps-5 col-md-6 col-sm-12"><b>Novo Lead</b></h1>
+
+  </header>
+
+
+  <!-- Corpo da página -->
+  <body class="row">
+
+
+    <!-- Formulário de informações -->
+    <section class="col-md-6 col-sm-12 ">
+      <form class="w-75 mx-auto" [formGroup]="formularioLead">
+        <section class="form-group mb-4">
+          <label for="nome">Nome *</label>
+          <input type="text" formControlName="nome" class="form-control" >
+
+          <ng-container *ngIf="formularioLead.controls.nome.invalid && formularioLead.controls.nome.touched">
+            <small *ngIf="formularioLead.controls.nome.errors?.required" class="text-danger">
+              Campo obrigatório.
+            </small>
+
+          </ng-container>
+        </section>
+
+        <section class="form-group mb-4">
+          <label for="telefone">Telefone *</label>
+          <input type="text" formControlName="telefone" class="form-control" >
+
+          <ng-container *ngIf="formularioLead.controls.telefone.invalid && formularioLead.controls.telefone.touched">
+            <small *ngIf="formularioLead.controls.telefone.errors?.required" class="text-danger">
+              Campo obrigatório.
+            </small>
+
+          </ng-container>
+        </section>
+
+        <section class="form-group mb-4">
+          <label for="email">E-mail *</label>
+          <input type="email" formControlName="email" class="form-control" >
+
+          <ng-container *ngIf="formularioLead.controls.email.invalid && formularioLead.controls.email.touched">
+            <small *ngIf="formularioLead.controls.email.errors?.required" class="text-danger">
+              Campo obrigatório.
+            </small>
+
+          </ng-container>
+        </section>
+
+      </form>
+    </section>
+
+    <!-- Tabela de oportunidades (checkbox) -->
+    <section class="col-md-6 col-sm-12 px-5">
+
+      <h3 class="mb-4">Oportunidades</h3>
+
+      <table class="table table-bordered table-sm mb-4">
+
+       <thead>
+         <tr>
+           <th><input type="checkbox"></th>
+           <th></th>
+         </tr>
+       </thead>
+
+       <tbody>
+         <tr scope="row" *ngFor='let item of listaOportunidades'>
+           <td>
+             <input type="checkbox" value="{{item}}">
+           </td>
+           <td class="px-3">{{item}}</td>
+         </tr>
+       </tbody>
+
+      </table>
+
+      <button class="btn btn-info">Salvar</button>
+    </section>
+
+  </body>
+</main>
