@@ -22,17 +22,20 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
   }
 
-  validaConfirmSenha(control: FormControl) {
+  validaConfirmSenha = (ConfirmSenha: FormControl) => {
 
-    const senha = control.get('senha')?.value;
-    const confirmSenha = control.get('confirmSenha')?.value;
+    const valorConfirmSenha = ConfirmSenha.value;
 
-    console.log(senha)
+    if(this.formulario) {
+    const valorSenha =  this.formulario.get('senha')?.value;
 
-    return (senha == confirmSenha) ? null : {senhasDiferentes : true}
+      return (valorConfirmSenha == valorSenha) ? null : {senhasDiferentes : true}
+    }
 
+    return null;
 
   }
 

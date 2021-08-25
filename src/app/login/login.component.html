@@ -47,7 +47,7 @@
             <small *ngIf="formulario.controls.confirmSenha.errors?.required" class="text-danger">
               Campo obrigatório.
             </small>
-            <small *ngIf="formulario.controls.confirmSenha.errors?.validaConfirmSenha" class="text-danger">
+            <small *ngIf="formulario.controls.confirmSenha.errors?.senhasDiferentes" class="text-danger">
               Senhas digitadas não são iguais.
             </small>
 
