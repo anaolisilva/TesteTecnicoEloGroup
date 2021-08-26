@@ -52,19 +52,14 @@ export class NovoleadComponent implements OnInit {
 
 }
 
+// Função que marca/desmarca todos os checkbox.
 
-  // checkAll(){
-  //   if (!this.todosSelecionados){
-
-  //     this.todosSelecionados = true;
-
-  //   } else {
-
-  //     this.todosSelecionados = false;
-  //   }
-
-  //   console.log(this.todosSelecionados)
-
-  // }
+  checkAll(){
+    if (!this.todosSelecionados){
+      this.todosSelecionados = true;
+    } else {
+      this.todosSelecionados = false;
+    }
+  }
 
 }

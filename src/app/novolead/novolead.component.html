@@ -73,7 +73,7 @@
 
         <thead>
           <tr class="table-secondary">
-            <th><input type="checkbox"></th>
+            <th><input type="checkbox"  (click)="checkAll()"></th>
             <th></th>
           </tr>
         </thead>
@@ -81,7 +81,7 @@
         <tbody>
           <tr scope="row" formArrayName="oportunidades"  *ngFor='let item of oportunidades; let i = index'>
             <td>
-              <input type="checkbox" [formControlName]="i" value="{{item}}">
+              <input type="checkbox" [checked]="todosSelecionados" [formControlName]="i" value="{{item}}">
             </td>
             <td class="px-3">{{item}}</td>
           </tr>
