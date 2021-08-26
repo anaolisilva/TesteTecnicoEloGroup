@@ -1,4 +1,3 @@
-
 <main>
 
   <!-- Cabeçalho -->
@@ -14,6 +13,7 @@
 
 
   <!-- Corpo da página -->
+
   <body class="row">
 
 
@@ -22,7 +22,7 @@
       <form class="w-75 mx-auto" [formGroup]="formularioLead">
         <section class="form-group mb-4">
           <label for="nome">Nome *</label>
-          <input type="text" formControlName="nome" class="form-control" >
+          <input type="text" formControlName="nome" class="form-control">
 
           <ng-container *ngIf="formularioLead.controls.nome.invalid && formularioLead.controls.nome.touched">
             <small *ngIf="formularioLead.controls.nome.errors?.required" class="text-danger">
@@ -34,7 +34,7 @@
 
         <section class="form-group mb-4">
           <label for="telefone">Telefone *</label>
-          <input type="text" formControlName="telefone" class="form-control" >
+          <input type="text" formControlName="telefone" class="form-control">
 
           <ng-container *ngIf="formularioLead.controls.telefone.invalid && formularioLead.controls.telefone.touched">
             <small *ngIf="formularioLead.controls.telefone.errors?.required" class="text-danger">
@@ -46,7 +46,7 @@
 
         <section class="form-group mb-4">
           <label for="email">E-mail *</label>
-          <input type="email" formControlName="email" class="form-control" >
+          <input type="email" formControlName="email" class="form-control">
 
           <ng-container *ngIf="formularioLead.controls.email.invalid && formularioLead.controls.email.touched">
             <small *ngIf="formularioLead.controls.email.errors?.required" class="text-danger">
@@ -64,27 +64,30 @@
 
       <h3 class="mb-4">Oportunidades</h3>
 
+      <form [formGroup]="formularioLead">
+
       <table class="table table-bordered table-sm mb-4">
 
-       <thead>
-         <tr>
-           <th><input type="checkbox"></th>
-           <th></th>
-         </tr>
-       </thead>
+        <thead>
+          <tr>
+            <th><input type="checkbox"></th>
+            <th></th>
+          </tr>
+        </thead>
 
-       <tbody>
-         <tr scope="row" *ngFor='let item of listaOportunidades'>
-           <td>
-             <input type="checkbox" value="{{item}}">
-           </td>
-           <td class="px-3">{{item}}</td>
-         </tr>
-       </tbody>
+        <tbody>
+          <tr scope="row" formArrayName="oportunidades"  *ngFor='let item of oportunidades; let i = index'>
+            <td>
+              <input type="checkbox" [formControlName]="i" value="{{item}}">
+            </td>
+            <td class="px-3">{{item}}</td>
+          </tr>
+        </tbody>
 
       </table>
+    </form>
 
-      <button class="btn btn-info">Salvar</button>
+      <button (click)="salvar()" class="btn btn-info">Salvar</button>
     </section>
 
   </body>

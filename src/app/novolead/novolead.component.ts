@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-novolead',
@@ -8,26 +8,60 @@ import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms'
 })
 export class NovoleadComponent implements OnInit {
 
-  formularioLead : FormGroup
+  formularioLead: FormGroup
+  oportunidades = ['RPA', 'Produto Digital', 'Analytics', 'BPM'];
+
+  todosSelecionados: boolean = false
 
   constructor(private formBuilder: FormBuilder) {
     this.formularioLead = this.formBuilder.group({
-      nome:['', [Validators.required]],
+      nome: ['', [Validators.required]],
       telefone: ['', [Validators.required,]],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
+      oportunidades: this.buildOportunidades()
     })
-   }
+  }
 
-  listaOportunidades : string[] = ['RPA', 'Produto Digital', 'Analytics', 'BPM'];
 
 
   ngOnInit() {
-    console.log(this.listaOportunidades)
+    console.log(this.formularioLead)
   }
 
+  buildOportunidades() {
 
-  checkAll(){
+    const oportunidadesEscolhidas = this.oportunidades.map(op => new FormControl(false));
+
+    return this.formBuilder.array(oportunidadesEscolhidas);
 
   }
+
+  salvar() {
+    let oportunidadesSubmit = Object.assign({}, this.formularioLead.value);
+
+    oportunidadesSubmit = Object.assign(oportunidadesSubmit, {
+      oportunidades: oportunidadesSubmit.oportunidades
+        .map((op: boolean, i: number) => op ? this.oportunidades[i] : null)
+        .filter((op: string) => op != null)
+    });
+
+    console.log(oportunidadesSubmit)
+
+}
+
+
+  // checkAll(){
+  //   if (!this.todosSelecionados){
+
+  //     this.todosSelecionados = true;
+
+  //   } else {
+
+  //     this.todosSelecionados = false;
+  //   }
+
+  //   console.log(this.todosSelecionados)
+
+  // }
 
 }
