@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { NovoleadComponent } from './novolead/novolead.component';
+import { PainelleadsComponent } from './painelleads/painelleads.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NovoleadComponent
+    NovoleadComponent,
+    PainelleadsComponent
   ],
   imports: [
     BrowserModule,
