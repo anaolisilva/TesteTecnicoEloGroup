@@ -45,7 +45,10 @@ export class NovoleadComponent implements OnInit {
         .filter((op: string) => op != null)
     });
 
-    console.log(oportunidadesSubmit)
+    console.log(oportunidadesSubmit, this.formularioLead)
+
+    //Colocar o dado do nome do lead no localstorage provavelmente
+    //Talvez seja interessante, se der tempo, colocar validação de pelo menos um nos checkboxes
 
 }
 

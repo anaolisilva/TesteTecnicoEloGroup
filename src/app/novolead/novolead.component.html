@@ -52,6 +52,9 @@
             <small *ngIf="formularioLead.controls.email.errors?.required" class="text-danger">
               Campo obrigatório.
             </small>
+            <small *ngIf="formularioLead.controls.email.errors?.email" class="text-danger">
+              E-mail inválido.
+            </small>
 
           </ng-container>
         </section>
@@ -69,7 +72,7 @@
       <table class="table table-bordered table-sm mb-4">
 
         <thead>
-          <tr>
+          <tr class="table-secondary">
             <th><input type="checkbox"></th>
             <th></th>
           </tr>
