@@ -65,11 +65,20 @@
     <!-- Tabela de oportunidades (checkbox) -->
     <section class="col-md-6 col-sm-12 px-5">
 
-      <h3 class="mb-4">Oportunidades</h3>
+      <h3 class="mb-4">Oportunidades *</h3>
+
+    <!-- Mensagem de erro não tá funcionando -->
+<!--
+      <ng-container *ngIf="formularioLead.get('oportunidades')!.invalid">
+        <small *ngIf="formularioLead.get('oportunidades')!.invalid" class="text-danger">
+          Selecione pelo menos uma opção.
+        </small>
+
+      </ng-container> -->
 
       <form [formGroup]="formularioLead">
 
-      <table class="table table-bordered table-sm mb-4">
+      <table class="table table-bordered table-sm mb-4 w-50">
 
         <thead>
           <tr class="table-secondary">
