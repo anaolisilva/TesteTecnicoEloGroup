@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, FormControl, FormArray } from '@angular/forms';
+import { ValidFormService } from '../service/valid-form.service';
+
 
 @Component({
   selector: 'app-novolead',
@@ -22,10 +24,8 @@ export class NovoleadComponent implements OnInit {
     })
   }
 
-
-
   ngOnInit() {
-    console.log(this.formularioLead.controls.oportunidades.getError('minimo'))
+
   }
 
   //Construção do array de oportunidades
@@ -33,20 +33,10 @@ export class NovoleadComponent implements OnInit {
 
     const oportunidadesEscolhidas = this.oportunidades.map(op => new FormControl(false));
 
-    return this.formBuilder.array(oportunidadesEscolhidas, this.requiredMinCheckbox);
+    return this.formBuilder.array(oportunidadesEscolhidas, ValidFormService.requiredMinCheckbox);
   }
 
-  //Regra de validação dos Checkbox
-  //Passar todas as regras de validação para uma service de formulários?
-  requiredMinCheckbox(){
-    const validator = (op: FormArray) => {
-      const totalChcked = op.controls.map(v => v.value).reduce((total, atual) => atual ? total + atual : total, 0);
-      return totalChcked >= 1 ? null : {minimo : true};
 
-    }
-
-    return validator;
-  }
 
   //Função do botão salvar
   salvar() {
@@ -67,7 +57,6 @@ export class NovoleadComponent implements OnInit {
 
 
     //Colocar o dado do nome do lead no localstorage provavelmente
-    //Colocar validação de pelo menos um nos checkboxes
 
 }
 
