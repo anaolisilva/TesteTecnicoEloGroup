@@ -22,7 +22,7 @@
       <form class="w-75 mx-auto" [formGroup]="formularioLead">
         <section class="form-group mb-4">
           <label for="nome">Nome *</label>
-          <input type="text" formControlName="nome" class="form-control">
+          <input [(ngModel)]='novoLead.nome' type="text" formControlName="nome" class="form-control">
 
           <ng-container *ngIf="formularioLead.controls.nome.invalid && formularioLead.controls.nome.touched">
             <small *ngIf="formularioLead.controls.nome.errors?.required" class="text-danger">
@@ -34,7 +34,7 @@
 
         <section class="form-group mb-4">
           <label for="telefone">Telefone *</label>
-          <input type="text" formControlName="telefone" class="form-control">
+          <input [(ngModel)]='novoLead.telefone' type="text" formControlName="telefone" class="form-control">
 
           <ng-container *ngIf="formularioLead.controls.telefone.invalid && formularioLead.controls.telefone.touched">
             <small *ngIf="formularioLead.controls.telefone.errors?.required" class="text-danger">
@@ -46,7 +46,7 @@
 
         <section class="form-group mb-4">
           <label for="email">E-mail *</label>
-          <input type="email" formControlName="email" class="form-control">
+          <input [(ngModel)]='novoLead.email' type="email" formControlName="email" class="form-control">
 
           <ng-container *ngIf="formularioLead.controls.email.invalid && formularioLead.controls.email.touched">
             <small *ngIf="formularioLead.controls.email.errors?.required" class="text-danger">
@@ -99,7 +99,7 @@
       </table>
     </form>
 
-      <button (click)="salvar()" class="btn btn-info">Salvar</button>
+      <button (click)="salvar()" routerLink='/painel' class="btn btn-info">Salvar</button>
     </section>
 
   </body>
