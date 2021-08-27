@@ -10,17 +10,14 @@ export class ValidFormService {
 
   //Validação da confirmação de senha
   static validaConfirmSenha = (ConfirmSenha: FormControl, form: FormGroup) => {
-
     const valorConfirmSenha = ConfirmSenha.value;
 
     if (form) {
       const valorSenha = form.get('senha')?.value;
-
       return (valorConfirmSenha == valorSenha) ? null : { senhasDiferentes: true }
     }
 
     return null;
-
   }
 
   //Regra de validação dos Checkbox
@@ -33,7 +30,6 @@ export class ValidFormService {
 
     return validator;
   }
-
 
 
 }
