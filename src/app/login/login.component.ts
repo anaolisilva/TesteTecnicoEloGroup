@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ValidFormService } from '../service/valid-form.service';
+import { StorageService } from '../service/storage.service';
+
 
 @Component({
   selector: 'app-login',
@@ -11,41 +12,55 @@ export class LoginComponent implements OnInit {
 
   formulario: FormGroup;
 
+  chaveUser = 'Usuarios'
   usuarios:Array<string> = [];
   senhas: Array<string> = [];
 
   constructor(
     private formBuilder: FormBuilder,
+    private storageService: StorageService
   ) {
     this.formulario = this.formBuilder.group({
       usuario: ['', [Validators.required]],
       senha: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]],
-      confirmSenha: ['', [Validators.required, ValidFormService.validaConfirmSenha]]
+      confirmSenha: ['', [Validators.required, this.validaConfirmSenha]]
     })
 
   }
 
   ngOnInit() {
-    if(localStorage.getItem('Usuarios')){
-      this.usuarios = (JSON.parse(localStorage.getItem('Usuarios')!))
+
+    if(localStorage.getItem(this.chaveUser)){
+
+      this.usuarios = this.storageService.getDados(this.chaveUser)
+
     }
 
   }
+
+  //Validação da confirmação de senha
+  validaConfirmSenha = (ConfirmSenha: FormControl) => {
+    const valorConfirmSenha = ConfirmSenha.value;
+
+    if (this.formulario) {
+      const valorSenha = this.formulario.get('senha')?.value;
+      return (valorConfirmSenha == valorSenha) ? null : { senhasDiferentes: true }
+    }
+
+    return null;
+  }
+
+
 
   registrar() {
 
     if (this.formulario.valid) {
+
       this.usuarios.push(this.formulario.get('usuario')?.value)
 
-      console.log(this.usuarios)
-
-      return localStorage.setItem('Usuarios', JSON.stringify(this.usuarios))
+      this.storageService.setDados(this.chaveUser, this.usuarios)
     }
 
-
   }
-
-
-
 
 }

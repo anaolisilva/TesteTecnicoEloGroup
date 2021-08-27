@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { NovoleadComponent } from './novolead/novolead.component';
 import { PainelleadsComponent } from './painelleads/painelleads.component';
-import { ValidFormService } from './service/valid-form.service';
+import { StorageService } from './service/storage.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { ValidFormService } from './service/valid-form.service';
     ReactiveFormsModule
   ],
   providers: [
-    ValidFormService
+    StorageService
   ],
   bootstrap: [AppComponent]
 })

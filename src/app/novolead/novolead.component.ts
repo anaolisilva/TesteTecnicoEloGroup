@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, FormControl, FormArray } from '@angular/forms';
-import { ValidFormService } from '../service/valid-form.service';
 
 
 @Component({
@@ -33,9 +32,19 @@ export class NovoleadComponent implements OnInit {
 
     const oportunidadesEscolhidas = this.oportunidades.map(op => new FormControl(false));
 
-    return this.formBuilder.array(oportunidadesEscolhidas, ValidFormService.requiredMinCheckbox);
+    return this.formBuilder.array(oportunidadesEscolhidas, this.requiredMinCheckbox);
   }
 
+
+  //Regra de validação dos Checkbox
+  requiredMinCheckbox() {
+    const validator = (op: FormArray) => {
+      const totalChcked = op.controls.map(v => v.value).reduce((total, atual) => atual ? total + atual : total, 0);
+      return totalChcked >= 1 ? null : { minimo: true };
+
+    }
+    return validator;
+  }
 
 
   //Função do botão salvar
