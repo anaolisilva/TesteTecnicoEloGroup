@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, FormControl, FormArray } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Lead } from '../model/Lead';
 import { StorageService } from '../service/storage.service';
 
@@ -22,7 +23,8 @@ export class NovoleadComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private router: Router
   ) {
     this.formularioLead = this.formBuilder.group({
       nome: ['', [Validators.required]],
@@ -60,8 +62,8 @@ export class NovoleadComponent implements OnInit {
 
   //Função do botão salvar
   salvar() {
-    // let oportunidadesSubmit = Object.assign({}, this.formularioLead.value);
 
+    //Registra as oportunidades do lead escolhidas
     let oportunidadesSubmit = Object.assign(this.formularioLead.value, {
       oportunidades: this.formularioLead.value.oportunidades
         .map((op: boolean, i: number) => op ? this.oportunidades[i] : null)
@@ -73,6 +75,7 @@ export class NovoleadComponent implements OnInit {
 
     if (oportunidadesSubmit.oportunidades.length == 0) {
       alert('Escolha pelo menos uma oportunidade.')
+      history.pushState('', '/')
     }
 
     if (this.formularioLead.valid) {
@@ -80,6 +83,8 @@ export class NovoleadComponent implements OnInit {
       this.leadsTodos = this.storageService.getDados(this.chaveLead)
       this.leadsTodos.push(this.novoLead)
       this.storageService.setDados(this.chaveLead, this.leadsTodos)
+
+      this.router.navigate(['/painel'])
 
     }
 

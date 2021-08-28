@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Usuario } from '../model/Usuario';
 import { StorageService } from '../service/storage.service';
 
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private router: Router
   ) {
     this.formulario = this.formBuilder.group({
       usuario: ['', [Validators.required]],
@@ -62,6 +64,8 @@ export class LoginComponent implements OnInit {
       this.storageService.setDados(this.chaveUser, this.usuarios);
 
       this.novoUsuario = new Usuario();
+
+      this.router.navigate(['/painel'])
     }
 
   }
