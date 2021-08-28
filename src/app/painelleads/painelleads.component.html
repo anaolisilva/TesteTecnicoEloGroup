@@ -21,7 +21,7 @@
 
     <!-- Tabela de leads -->
     <section>
-      <table class="table table-striped table-bordered">
+      <table class="table table-striped table-bordered leads">
 
         <thead>
           <tr class="table-dark">
@@ -32,9 +32,9 @@
         </thead>
         <tbody>
           <tr *ngFor='let lead of todosLeads; let i = index'>
-            <td>{{lead.nome}}</td>
-            <td> </td>
-            <td> </td>
+            <td (click)='tabelastatus(i, 1)' id="c1-{{i}}" class="tb-celula">{{lead.nome}}</td>
+            <td class="tb-celula" (click)='tabelastatus(i, 2)' id="c2-{{i}}"> </td>
+            <td class="tb-celula" id="c3-{{i}}"> </td>
           </tr>
 
         </tbody>

@@ -35,7 +35,29 @@ export class PainelleadsComponent implements OnInit {
   }
 
   todosLeadsBuilder() {
-    this.todosLeads = [this.OrgIntern, this.IndFarm, this.SoundLive]
+    this.todosLeads = [this.OrgIntern, this.IndFarm, this.SoundLive];
+  }
+
+
+  tabelastatus(index: number, col: number) {
+
+    let idAcess = '#c' + col + '-' + index;
+
+    let tds = document.querySelector(idAcess); //célula acessada
+
+    let edit = tds!.innerHTML; //Fica com o valor do que está na célula.
+
+    col++;
+
+    let idAtualizado = '#c' + col + '-' + index;
+
+    let interm = document.querySelector(idAtualizado);
+
+
+    interm!.innerHTML = edit;
+
+    tds!.innerHTML = '';
+
   }
 
 }
