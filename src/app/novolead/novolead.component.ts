@@ -12,16 +12,18 @@ import { StorageService } from '../service/storage.service';
 export class NovoleadComponent implements OnInit {
 
   formularioLead: FormGroup
+
   oportunidades = ['RPA', 'Produto Digital', 'Analytics', 'BPM'];
   novoLead: Lead = new Lead('');
   leadsTodos: Lead[];
+  chaveLead = "Leads";
 
   todosSelecionados: boolean = false
 
   constructor(
     private formBuilder: FormBuilder,
     private storageService: StorageService
-    ) {
+  ) {
     this.formularioLead = this.formBuilder.group({
       nome: ['', [Validators.required]],
       telefone: ['', [Validators.required,]],
@@ -32,7 +34,7 @@ export class NovoleadComponent implements OnInit {
 
   ngOnInit() {
 
-    this.leadsTodos = this.storageService.getDados('Leads')
+    this.leadsTodos = this.storageService.getDados(this.chaveLead)
 
   }
 
@@ -75,27 +77,27 @@ export class NovoleadComponent implements OnInit {
 
     if (this.formularioLead.valid) {
 
-      this.leadsTodos = this.storageService.getDados('Leads')
+      this.leadsTodos = this.storageService.getDados(this.chaveLead)
       this.leadsTodos.push(this.novoLead)
-      this.storageService.setDados('Leads', this.leadsTodos)
+      this.storageService.setDados(this.chaveLead, this.leadsTodos)
 
     }
 
-}
+  }
 
-// Função que marca/desmarca todos os checkbox.
-//Agora adiciona no array, mas se desmarca um, desmarca todos.
-  checkAll(){
-    if (!this.todosSelecionados){
+  // Função que marca/desmarca todos os checkbox.
+  //Agora adiciona no array, mas se desmarca um, desmarca todos.
+  checkAll() {
+    if (!this.todosSelecionados) {
       this.todosSelecionados = true;
       Object.assign(this.formularioLead.value, {
         oportunidades: this.formularioLead.value.oportunidades.map((op: boolean) => op = true)
-            })
+      })
     } else {
       this.todosSelecionados = false;
       Object.assign(this.formularioLead.value, {
         oportunidades: this.formularioLead.value.oportunidades.map((op: boolean) => op = false)
-            })
+      })
     }
     console.log(this.formularioLead)
 

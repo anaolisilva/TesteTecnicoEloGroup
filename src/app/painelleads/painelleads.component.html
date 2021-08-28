@@ -12,26 +12,30 @@
   </header>
 
   <body class="row">
+    <!-- Botão: Adicionar Lead -->
     <div class="row mb-3 mx-2">
       <div>
         <button routerLink='/novolead' class="btn btn-info">Novo Lead (+)</button>
       </div>
     </div>
 
+    <!-- Tabela de leads -->
     <section>
-      <table class="table table-secondary table-striped table-bordered">
+      <table class="table table-striped table-bordered">
 
         <thead>
-          <tr>
+          <tr class="table-dark">
             <th>Cliente em Potencial</th>
             <th>Dados confirmados</th>
             <th>Reunião Agendada</th>
           </tr>
         </thead>
-        <tr>
-          <td>Org. Internacionais</td>
-        </tr>
         <tbody>
+          <tr *ngFor='let lead of todosLeads; let i = index'>
+            <td>{{lead.nome}}</td>
+            <td> </td>
+            <td> </td>
+          </tr>
 
         </tbody>
       </table>

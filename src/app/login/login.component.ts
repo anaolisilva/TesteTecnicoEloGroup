@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Usuario } from '../model/Usuario';
 import { StorageService } from '../service/storage.service';
 
 
@@ -12,9 +13,9 @@ export class LoginComponent implements OnInit {
 
   formulario: FormGroup;
 
-  chaveUser = 'Usuarios'
-  usuarios:Array<string> = [];
-  senhas: Array<string> = [];
+  chaveUser = 'Usuarios';
+  usuarios: Usuario[] = [];
+  novoUsuario: Usuario = new Usuario();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -44,7 +45,7 @@ export class LoginComponent implements OnInit {
 
     if (this.formulario) {
       const valorSenha = this.formulario.get('senha')?.value;
-      return (valorConfirmSenha == valorSenha) ? null : { senhasDiferentes: true }
+      return (valorConfirmSenha == valorSenha) ? null : { senhasDiferentes: true };
     }
 
     return null;
@@ -56,9 +57,11 @@ export class LoginComponent implements OnInit {
 
     if (this.formulario.valid) {
 
-      this.usuarios.push(this.formulario.get('usuario')?.value)
+      this.usuarios.push(this.novoUsuario);
 
-      this.storageService.setDados(this.chaveUser, this.usuarios)
+      this.storageService.setDados(this.chaveUser, this.usuarios);
+
+      this.novoUsuario = new Usuario();
     }
 
   }

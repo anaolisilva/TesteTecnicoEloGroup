@@ -14,7 +14,7 @@
 
         <section class="form-group mb-4">
           <label for="usuario">Usuário *</label>
-          <input type="text" class="form-control" formControlName="usuario">
+          <input [(ngModel)]='novoUsuario.user' type="text" class="form-control" formControlName="usuario">
           <ng-container *ngIf="formulario.controls.usuario.invalid && formulario.controls.usuario.touched" class="">
             <small *ngIf="formulario.controls.usuario.errors?.required" class="text-danger">
               Campo obrigatório.
@@ -42,7 +42,7 @@
 
           <label for="confirmSenha">Confirme sua senha *</label>
 
-          <input type="password" class="form-control" formControlName="confirmSenha" name="confirmSenha">
+          <input [(ngModel)]='novoUsuario.senha' type="password" class="form-control" formControlName="confirmSenha" name="confirmSenha">
           <ng-container *ngIf="formulario.controls.confirmSenha.invalid && formulario.controls.confirmSenha.touched">
             <small *ngIf="formulario.controls.confirmSenha.errors?.required" class="text-danger">
               Campo obrigatório.

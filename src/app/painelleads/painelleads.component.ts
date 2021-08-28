@@ -17,8 +17,6 @@ export class PainelleadsComponent implements OnInit {
   todosLeads: Lead[];
 
 
-
-
   constructor(
     private storageService: StorageService
   ) { }
