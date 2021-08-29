@@ -15,7 +15,7 @@
     <!-- Botão: Adicionar Lead -->
     <div class="row mb-3 mx-2">
       <div>
-        <button routerLink='/novolead' class="btn btn-info">Novo Lead (+)</button>
+        <button routerLink='/novolead' class="btn fundo-coral-elog">Novo Lead (+)</button>
       </div>
     </div>
 
@@ -32,9 +32,15 @@
         </thead>
         <tbody>
           <tr *ngFor='let lead of todosLeads; let i = index'>
-            <td (click)='tabelastatus(i, 1)' id="c1-{{i}}" class="tb-celula">{{lead.nome}}</td>
-            <td class="tb-celula" (click)='tabelastatus(i, 2)' id="c2-{{i}}"> </td>
-            <td class="tb-celula" id="c3-{{i}}"> </td>
+
+            <td (dragend)='tabelastatus(i, 1, lead)' id="c1-{{i}}" class="tb-celula" draggable="true" *ngIf='lead.state == "A" '>{{lead.nome}}</td>
+            <td id="c1-{{i}}" class="tb-celula" *ngIf='lead.state != "A" '> </td>
+
+            <td draggable="true" class="tb-celula" (dragend)='tabelastatus(i, 2, lead)' id="c2-{{i}}" *ngIf='lead.state == "B" '>{{lead.nome}}</td>
+            <td id="c2-{{i}}" class="tb-celula" *ngIf='lead.state != "B" '> </td>
+
+            <td class="tb-celula" id="c3-{{i}}" *ngIf='lead.state == "C" '>{{lead.nome}}</td>
+            <td class="tb-celula" id="c3-{{i}}" *ngIf='lead.state != "C" '> </td>
           </tr>
 
         </tbody>

@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { NovoleadComponent } from './novolead/novolead.component';
 import { PainelleadsComponent } from './painelleads/painelleads.component';
 import { StorageService } from './service/storage.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { StorageService } from './service/storage.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     StorageService
