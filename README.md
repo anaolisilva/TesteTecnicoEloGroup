@@ -1,27 +1,13 @@
-# Elogroup
+<h1>👩‍💻 Teste técnico EloGroup</h1>
+<h3><em> Candidata: Ana Oliveira Silva  |  Case: Fullstack</em></h3>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.3.
+<p><strong>Framework utilizado: Angular 12</strong></p>
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<p> Algumas observações que eu gostaria de compartilhar, caso haja interesse: <br><br>
+  🔹 Embora tenha conseguido desenvolver a maior parte das funcionalidades pedidas, queria deixar notado um erro que percebi: minhas checkboxes, na tela de novo lead, estão com um pequeno problema. É possível selecionar e de-selecionar todas clicando na checkbox do cabeçalho da tabela ou selecioná-las individualmente; porém, ao selecionar todas e tentar de-selecionar algumas opções (mantendo a checkbox do cabeçalho selecionada), as oportunidades deixam de ser adicionadas ao array (quando seleciona-se todas e de-seleciona-se uma, manualmente, é como se todas fossem de-selecionadas, embora a visualização não indique isso. Tentei trabalhar sobre o problema, mas não consegui corrigi-lo de maneira satisfatória e decidi manter assim. <br><br>
+  🔹 Utilizei o Bootstrap para facilitar a estilização. Não encontrei informações específicas sobre isso no documento do case que recebi, então decidi utilizá-lo, para focar mais nas funcionalidades pedidas. <br><br>
+🔹 Claro que tem mais coisas que eu gostaria de falar, mas deixarei que vocês vejam por si só 😁</p>
+  
+  <hr>
+  
+  <h5 align="right"><em> Muito obrigada pela atenção e tempo ⏳ Aguardo o feedback ☺ </em></h5>
