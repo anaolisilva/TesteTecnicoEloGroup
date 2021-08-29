@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       usuario: ['', [Validators.required]],
       senha: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]],
       confirmSenha: ['', [Validators.required, this.validaConfirmSenha]]
-    })
+    });
 
   }
 
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
     if(localStorage.getItem(this.chaveUser)){
 
-      this.usuarios = this.storageService.getDados(this.chaveUser)
+      this.usuarios = this.storageService.getDados(this.chaveUser);
 
     }
 
